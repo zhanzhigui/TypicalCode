@@ -1,12 +1,12 @@
 // EnumToStringTester.cpp : Defines the entry point for the console application.
 //
+#pragma once
+#ifndef GUDGE_ONE_FUNC_EXISTS_IN_CLASS_HPP
+#define GUDGE_ONE_FUNC_EXISTS_IN_CLASS_HPP
 
+#include "stdafx.h"
 #include <iostream>
 #include <map>
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
 
 using namespace std;
 // The one and only application object
@@ -42,25 +42,24 @@ struct TypeExistEqualMemberFunc
     enum {value2 = test::value2};
 };
 
-int has()
+class TestGudgeOneFunCExistInClass
 {
-    std::cout<<"asdf"<<std::endl;
-    return 1;
+public:
+    TestGudgeOneFunCExistInClass()
+    {
+        int i = TypeExistEqualMemberFunc<A>::value1;
+#if 1
+        {
+            cout<<"A "<<endl;
+        }
+#endif
+        std::cout<< TypeExistEqualMemberFunc<A>::value1 <<std::endl;
+        std::cout<< TypeExistEqualMemberFunc<B>::value1 <<std::endl;
+
+        std::cout<< TypeExistEqualMemberFunc<A>::value2 <<std::endl;
+        std::cout<< TypeExistEqualMemberFunc<B>::value2 <<std::endl;
+    }
 };
 
-int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
-{
-    int i = TypeExistEqualMemberFunc<A>::value1;
-    #if 1
-    {
-        cout<<"A "<<endl;
-    }
-    #endif
-    std::cout<< TypeExistEqualMemberFunc<A>::value1 <<std::endl;
-    std::cout<< TypeExistEqualMemberFunc<B>::value1 <<std::endl;
-
-    std::cout<< TypeExistEqualMemberFunc<A>::value2 <<std::endl;
-    std::cout<< TypeExistEqualMemberFunc<B>::value2 <<std::endl;
-}
-
+#endif
 
