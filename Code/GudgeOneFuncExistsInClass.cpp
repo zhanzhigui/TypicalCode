@@ -1,10 +1,8 @@
 // EnumToStringTester.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
-#include "EnumToStringTester.h"
-#include "Days.h"
-#include "map"
+#include <iostream>
+#include <map>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
