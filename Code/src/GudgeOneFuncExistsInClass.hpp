@@ -47,6 +47,7 @@ class TestGudgeOneFunCExistInClass
 public:
     TestGudgeOneFunCExistInClass()
     {
+        cout<<"******* TestGudgeOneFunCExistInClass BEGIN *******"<<endl;
         int i = TypeExistEqualMemberFunc<A>::value1;
 #if 1
         {
@@ -58,6 +59,7 @@ public:
 
         std::cout<< TypeExistEqualMemberFunc<A>::value2 <<std::endl;
         std::cout<< TypeExistEqualMemberFunc<B>::value2 <<std::endl;
+        cout<<"******* TestGudgeOneFunCExistInClass END *******"<<endl;
     }
 };
 
