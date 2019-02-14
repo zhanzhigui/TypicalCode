@@ -1,7 +1,7 @@
 #ifndef ENUM_TO_STRING_HPP
 #define ENUM_TO_STRING_HPP
 
-#include "stdafx.h"
+#include "../stdafx.h"
 
 using namespace std;
 #undef DECL_ENUM_ELEMENT
@@ -50,6 +50,8 @@ public:
             cout<< GetStringWeekDay(WeekDay(index))<<" day is "<< index <<"th day, " <<endl;
         }
         cout<<"****** END TestEnumToString *******"<<endl;
+
+        WeekDay day = Wen;
     }
 };
 

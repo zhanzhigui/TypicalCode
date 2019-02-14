@@ -4,7 +4,7 @@
 #ifndef GUDGE_ONE_FUNC_EXISTS_IN_CLASS_HPP
 #define GUDGE_ONE_FUNC_EXISTS_IN_CLASS_HPP
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <iostream>
 #include <map>
 
@@ -14,8 +14,9 @@ using namespace std;
 class A
 {
 public:
-    inline int has_depdendent_speed_type() const;
-    bool les(const A& other);
+    inline int type()  {cout<<"A type"<<endl; return 1;};
+    bool les(const A& other) {return false;};
+    int point()  {return 1;};
 };
 
 class B
@@ -42,6 +43,25 @@ struct TypeExistEqualMemberFunc
     enum {value2 = test::value2};
 };
 
+template <class T>
+class RegistPFunc 
+{
+public:
+    T a;
+    RegistPFunc(T a_)
+    {
+        a = a_;
+        get_type = &A::type;
+    }
+
+    int (T::*get_type)();
+    int (T::*get_point)();
+    void funct()
+    {
+        cout<<"asdf"<<enld;
+    }
+};
+
 class TestGudgeOneFunCExistInClass
 {
 public:
@@ -49,16 +69,20 @@ public:
     {
         cout<<"******* TestGudgeOneFunCExistInClass BEGIN *******"<<endl;
         int i = TypeExistEqualMemberFunc<A>::value1;
-#if 1
-        {
-            cout<<"A "<<endl;
-        }
-#endif
-        std::cout<< TypeExistEqualMemberFunc<A>::value1 <<std::endl;
-        std::cout<< TypeExistEqualMemberFunc<B>::value1 <<std::endl;
+        A a;
+        RegistPFunc<A> reg(a);
+        //reg.*get_type();
+           
+        A aa;
+        int (A::*p)() = &A::type;
+        cout<< (aa.*p)() <<endl;
+     
+        
+        //std::cout<< TypeExistEqualMemberFunc<A>::value1 <<std::endl;
+        //std::cout<< TypeExistEqualMemberFunc<B>::value1 <<std::endl;
 
-        std::cout<< TypeExistEqualMemberFunc<A>::value2 <<std::endl;
-        std::cout<< TypeExistEqualMemberFunc<B>::value2 <<std::endl;
+        //std::cout<< TypeExistEqualMemberFunc<A>::value2 <<std::endl;
+        //std::cout<< TypeExistEqualMemberFunc<B>::value2 <<std::endl;
         cout<<"******* TestGudgeOneFunCExistInClass END *******"<<endl;
     }
 };
